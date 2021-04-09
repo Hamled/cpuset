@@ -144,7 +144,7 @@ class CpuSet(object):
 
             if not os.access(config.mountpoint, os.F_OK):
                 os.mkdir(config.mountpoint)
-            ret = os.system("mount -t cpuset none " + config.mountpoint)
+            ret = os.system("mount -t cgroup -o cpuset cpuset " + config.mountpoint)
             if ret:
                raise CpusetException(
                      'mount of cpuset filesystem failed, do you have permission?')
